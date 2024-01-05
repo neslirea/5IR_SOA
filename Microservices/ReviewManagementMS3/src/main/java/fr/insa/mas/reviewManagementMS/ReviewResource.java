@@ -12,6 +12,10 @@ import fr.insa.mas.reviewManagementMS.dao.ReviewDAO;
 
 @RestController
 public class ReviewResource {
+	@GetMapping("/review")
+	public Review[] getReviews(){
+		return ReviewDAO.getReviews();
+	}
 	
 	@GetMapping("/review/{id_volunteer}")
 	public Review[] getReviews(@PathVariable int id_volunteer){

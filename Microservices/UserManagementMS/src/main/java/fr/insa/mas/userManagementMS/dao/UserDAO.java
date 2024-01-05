@@ -5,15 +5,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-
-import java.sql.Statement;
 
 import fr.insa.mas.userManagementMS.Initiator;
 import fr.insa.mas.userManagementMS.User;
-import fr.insa.mas.userManagementMS.UserType;
 import fr.insa.mas.userManagementMS.Validator;
 import fr.insa.mas.userManagementMS.Volunteer;
+
+import java.util.ArrayList;
 
 public class UserDAO {
 	
@@ -49,6 +47,60 @@ public class UserDAO {
 		}
 	}
 	
+	public static User[] getInitiator() { 
+		String sqlSelectAllPersons = "SELECT * FROM User NATURAL JOIN Initiator;";
+		ArrayList<User> users = new ArrayList<>();
+		try (ResultSet rs = executeQuery(sqlSelectAllPersons)){
+	        while (rs.next()) {
+	        	int _id = rs.getInt("ID");
+		        String name = rs.getString("FIRST_NAME");
+		        String lastName = rs.getString("LAST_NAME");
+		        int validator = rs.getInt("VALIDATOR");
+		        
+		        if(validator==0) {validator=-1;}
+		        
+		        users.add(new Initiator(_id, name, lastName, validator));		            
+		    }
+	        return users.toArray(User[]::new);
+		} catch (SQLException e) {
+		    // handle the exception
+			System.err.println(e);
+		}
+		return null;
+	}
+
+	private static User[] getUser(String type) {
+		String sqlSelectAllPersons = "SELECT * FROM User NATURAL JOIN " + type + ";";
+		ArrayList<User> users = new ArrayList<>();
+		try (ResultSet rs = executeQuery(sqlSelectAllPersons)){
+	        while (rs.next()) {
+	        	int _id = rs.getInt("ID");
+		        String name = rs.getString("FIRST_NAME");
+		        String lastName = rs.getString("LAST_NAME");
+		        
+		        if ("Validator".equals(type)) {
+			        users.add(new Validator(_id, name, lastName));	
+		        } else {
+			        users.add(new Volunteer(_id, name, lastName));	
+		        }	            
+		    }
+	        return users.toArray(User[]::new);
+		} catch (SQLException e) {
+		    // handle the exception
+			System.err.println(e);
+		}
+		return null;
+	}
+	
+	public static User[] getValidator() {		
+		return getUser("Validator");
+		
+	}
+	
+	public static User[] getVolunteer() {
+		return getUser("Volunteer");
+	}
+	
 	public static User getInitiator(int id) {
 		String sqlSelectAllPersons = "SELECT * FROM User NATURAL JOIN Initiator WHERE User.ID=" + id + ";";
 
@@ -58,6 +110,8 @@ public class UserDAO {
 		        String name = rs.getString("FIRST_NAME");
 		        String lastName = rs.getString("LAST_NAME");
 		        int validator = rs.getInt("VALIDATOR");
+		        
+		        if(validator==0) {validator=-1;}
 		            
 		        return new Initiator(_id, name, lastName, validator);
 		    }

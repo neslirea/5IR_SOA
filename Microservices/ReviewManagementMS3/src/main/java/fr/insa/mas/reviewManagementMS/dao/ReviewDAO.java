@@ -41,6 +41,31 @@ public class ReviewDAO {
 	    return ps.executeUpdate();
 	}
 	
+
+	
+	public static Review[] getReviews() {
+		String sqlGetReview = "SELECT * FROM Review";
+
+		ArrayList<Review> reviews = new ArrayList<Review>();
+		try (ResultSet rs = executeQuery(sqlGetReview)) {
+			while (rs.next()) {
+				int id = rs.getInt("ID");
+				int note = rs.getInt("NOTE");
+				int mission = rs.getInt("MISSION");
+				String description = rs.getString("Review.DESCRIPTION");
+
+				reviews.add(new Review(id, note, mission, description));
+			}
+
+			return reviews.toArray(Review[]::new);
+		} catch (SQLException e) {
+			// handle the exception
+			System.err.println(e);
+		}
+		return null;
+	}
+
+	
 	
 	
 	public static void addReview(Review review){			

@@ -1,6 +1,5 @@
 package fr.insa.mas.missionManagementMS;
 
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +15,11 @@ public class MissionResource {
 	@GetMapping("/mission/{id_mission}")
 	public Mission getMission(@PathVariable int id_mission){
 		return MissionDAO.getMission(id_mission);
+	}
+	
+	@GetMapping("/mission")
+	public Mission[] getMission(){
+		return MissionDAO.getMission();
 	}
 	
 	@PostMapping(value="/mission")
