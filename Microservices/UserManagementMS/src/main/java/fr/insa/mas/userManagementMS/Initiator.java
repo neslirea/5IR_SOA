@@ -4,7 +4,7 @@ public class Initiator extends User {
 	
 	private Integer validator = null;
 
-	public Initiator(int id, String lastName, String firstName, int validator) {
+	public Initiator(int id, String lastName, String firstName, Integer validator) {
 		super(id, lastName, firstName);
 		this.validator = validator;
 	}
@@ -15,11 +15,11 @@ public class Initiator extends User {
 
 	public Initiator() {}
 
-	public int getValidator() {
+	public Integer getValidator() {
 		return validator;
 	}
 
-	public void setValidator(int validator) {
+	public void setValidator(Integer validator) {
 		this.validator = validator;
 	}
 	
