@@ -51,11 +51,11 @@ public class MissionDAO {
 		        Status status = getStatus(rs.getInt("STATUS"));
 		        Date creationDate = new Date(rs.getTimestamp("CREATION_DATE").getTime());
 		        Date finishDate = new Date(rs.getTimestamp("FINISH_DATE").getTime());
-		        int initiator = rs.getInt("INITIATOR");
-		        int volunteer = rs.getInt("VOLUNTEER");
+		        Integer initiator = rs.getInt("INITIATOR");
+		        Integer volunteer = rs.getInt("VOLUNTEER");
 		        
-		        if(initiator==0) {initiator=-1;}
-		        if(volunteer==0) {volunteer=-1;}
+		        if(initiator==0) {initiator=null;}
+		        if(volunteer==0) {volunteer=null;}
 		            
 		        missions.add(new Mission(_id, titre, description, creationDate, finishDate, initiator, volunteer, status));
 		    }

@@ -1,8 +1,8 @@
-package fr.insa.mas.userManagementMS;
+package fr.insa.mas.orchestrationMS;
 
 public class Initiator extends User {
 	
-	private Integer validator = null;
+	private Object validator = null;
 
 	public Initiator(int id, String lastName, String firstName, int validator) {
 		super(id, lastName, firstName);
@@ -15,16 +15,12 @@ public class Initiator extends User {
 
 	public Initiator() {}
 
-	public int getValidator() {
+	public Object getValidator() {
 		return validator;
 	}
 
-	public void setValidator(int validator) {
+	public void setValidator(Object validator) {
 		this.validator = validator;
-	}
-	
-	public boolean hasValidator() {
-		return this.validator != null;
 	}
 	
 	public void deleteValidator() {

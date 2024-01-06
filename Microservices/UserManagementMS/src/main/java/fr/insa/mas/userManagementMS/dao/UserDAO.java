@@ -55,9 +55,9 @@ public class UserDAO {
 	        	int _id = rs.getInt("ID");
 		        String name = rs.getString("FIRST_NAME");
 		        String lastName = rs.getString("LAST_NAME");
-		        int validator = rs.getInt("VALIDATOR");
+		        Integer validator = rs.getInt("VALIDATOR");
 		        
-		        if(validator==0) {validator=-1;}
+		        if(validator==0) {validator=null;}
 		        
 		        users.add(new Initiator(_id, name, lastName, validator));		            
 		    }
@@ -109,9 +109,9 @@ public class UserDAO {
 	        	int _id = rs.getInt("ID");
 		        String name = rs.getString("FIRST_NAME");
 		        String lastName = rs.getString("LAST_NAME");
-		        int validator = rs.getInt("VALIDATOR");
+		        Integer validator = rs.getInt("VALIDATOR");
 		        
-		        if(validator==0) {validator=-1;}
+		        if(validator==0) {validator=null;}
 		            
 		        return new Initiator(_id, name, lastName, validator);
 		    }
