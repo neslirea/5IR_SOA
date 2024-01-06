@@ -1,6 +1,7 @@
 package fr.insa.mas.reviewManagementMS;
 
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.insa.mas.reviewManagementMS.dao.ReviewDAO;
 
+@CrossOrigin
 @RestController
 public class ReviewResource {
 	@GetMapping("/review")

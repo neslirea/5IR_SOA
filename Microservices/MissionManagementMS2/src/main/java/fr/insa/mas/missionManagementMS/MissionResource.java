@@ -1,6 +1,7 @@
 package fr.insa.mas.missionManagementMS;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.insa.mas.missionManagementMS.dao.MissionDAO;
 
+@CrossOrigin
 @RestController
 public class MissionResource {
 	
