@@ -4,6 +4,7 @@ import fr.insa.soa.RestProject.Data.User;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
@@ -12,21 +13,22 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.UriInfo;
 
 
-@Path("etudiant")
+@Path("user")
 public class UserResource {
 	
     @GET
-    @Path("/{idEtudiant}")
+    @Path("/{idUser}")
     @Produces(MediaType.APPLICATION_JSON)
-    public User getUser(@PathParam("idEtudiant") int id, @Context UriInfo uriInfo) {
+    public User getUser(@PathParam("idUser") int id, @Context UriInfo uriInfo) {
     	User user = new User();
     	user.setLastName("Aubawi");
     	user.setFirstName("Claym");
     	user.setId(1);
-        if (id<1) {
+        if (id==2) {
         	User user2 = new User();
         	user2.setLastName("Shinary");
         	user2.setFirstName("Aymea");
+        	user2.setId(id);
         	user2.setValidator(user.getId());
             user = user2;
         }
@@ -35,6 +37,14 @@ public class UserResource {
         	user.addLink(getUriforValidator(uriInfo, user), "validator", "GET");
     	}
         return user;
+    }
+    
+    @PUT
+    @Path("/{idUser}/setValidator/{idValidator}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public void setValidator(@PathParam("idUser") int id, @PathParam("idUser") int id_validator, @Context UriInfo uriInfo) {
+
+    	System.out.println("Modification de l'utilisateur "+ id+". Modification de son valideur :  "+ id_validator +" réussie!");
     }
 
     @POST
