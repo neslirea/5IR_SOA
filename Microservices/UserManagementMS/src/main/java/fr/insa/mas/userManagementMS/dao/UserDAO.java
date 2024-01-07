@@ -59,7 +59,7 @@ public class UserDAO {
 		        
 		        if(validator==0) {validator=null;}
 		        
-		        users.add(new Initiator(_id, name, lastName, validator));		            
+		        users.add(new Initiator(_id, lastName, name, validator));		            
 		    }
 	        return users.toArray(User[]::new);
 		} catch (SQLException e) {
@@ -79,9 +79,9 @@ public class UserDAO {
 		        String lastName = rs.getString("LAST_NAME");
 		        
 		        if ("Validator".equals(type)) {
-			        users.add(new Validator(_id, name, lastName));	
+			        users.add(new Validator(_id, lastName, name));	
 		        } else {
-			        users.add(new Volunteer(_id, name, lastName));	
+			        users.add(new Volunteer(_id, lastName, name));	
 		        }	            
 		    }
 	        return users.toArray(User[]::new);
@@ -113,7 +113,7 @@ public class UserDAO {
 		        
 		        if(validator==0) {validator=null;}
 		            
-		        return new Initiator(_id, name, lastName, validator);
+		        return new Initiator(_id, lastName, name, validator);
 		    }
 		} catch (SQLException e) {
 		    // handle the exception
@@ -131,7 +131,7 @@ public class UserDAO {
 		        String name = rs.getString("FIRST_NAME");
 		        String lastName = rs.getString("LAST_NAME");
 		            
-		        return new Validator(_id, name, lastName);
+		        return new Validator(_id, lastName, name);
 		    }
 		} catch (SQLException e) {
 		    // handle the exception
@@ -149,7 +149,7 @@ public class UserDAO {
 		        String name = rs.getString("FIRST_NAME");
 		        String lastName = rs.getString("LAST_NAME");
 		            
-		        return new Volunteer(_id, name, lastName);
+		        return new Volunteer(_id, lastName, name);
 		    }
 		} catch (SQLException e) {
 		    // handle the exception
