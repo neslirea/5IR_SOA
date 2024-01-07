@@ -40,13 +40,13 @@ public class MissionDAO {
 	}
 	
 	public static Mission[] getMission() {
-		String sqlSelectMission = "SELECT * FROM Status JOIN Mission WHERE Mission.Status = Status.id;";
+		String sqlSelectMission = "SELECT * FROM Status JOIN Mission ON Mission.Status = Status.id;";
 
 		ArrayList<Mission> missions = new ArrayList<Mission>();
 
 		try (ResultSet rs = executeQuery(sqlSelectMission)){
 	        while (rs.next()) {
-	        	int _id = rs.getInt("ID");
+	        	int _id = rs.getInt("Mission.ID");
 		        String titre = rs.getString("TITRE");
 		        String description = rs.getString("DESCRIPTION");
 		        Status status = getStatus(rs.getInt("STATUS"));
@@ -75,11 +75,11 @@ public class MissionDAO {
 	
 	
 	public static Mission getMission(int id) {
-		String sqlSelectMission = "SELECT * FROM Status JOIN Mission WHERE Mission.Status = Status.id AND Mission.ID=" + id + ";";
+		String sqlSelectMission = "SELECT * FROM Status JOIN Mission ON Mission.Status = Status.id WHERE Mission.ID=" + id + ";";
 
 		try (ResultSet rs = executeQuery(sqlSelectMission)){
 	        while (rs.next()) {
-	        	int _id = rs.getInt("ID");
+	        	int _id = rs.getInt("Mission.ID");
 		        String titre = rs.getString("TITRE");
 		        String description = rs.getString("DESCRIPTION");
 		        Status status = getStatus(rs.getInt("STATUS"));
