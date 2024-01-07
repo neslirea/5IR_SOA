@@ -40,7 +40,7 @@ public class MissionDAO {
 	}
 	
 	public static Mission[] getMission() {
-		String sqlSelectMission = "SELECT * FROM Mission NATURAL JOIN Status;";
+		String sqlSelectMission = "SELECT * FROM Status JOIN Mission WHERE Mission.Status = Status.id;";
 
 		ArrayList<Mission> missions = new ArrayList<Mission>();
 
@@ -75,7 +75,7 @@ public class MissionDAO {
 	
 	
 	public static Mission getMission(int id) {
-		String sqlSelectMission = "SELECT * FROM Mission NATURAL JOIN Status WHERE Mission.ID=" + id + ";";
+		String sqlSelectMission = "SELECT * FROM Status JOIN Mission WHERE Mission.Status = Status.id AND Mission.ID=" + id + ";";
 
 		try (ResultSet rs = executeQuery(sqlSelectMission)){
 	        while (rs.next()) {
