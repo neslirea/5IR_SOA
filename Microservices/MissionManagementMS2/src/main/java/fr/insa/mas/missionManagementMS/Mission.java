@@ -14,12 +14,12 @@ public class Mission {
 	private Date finishDate;
 	
 	private int initiator;
-	private int volunteer;	
+	private Integer volunteer;	
 	
 	private Status status;
 
 	public Mission(int id, String titre, String description, Date creationDate, Date finishDate, int initiator,
-			int volunteer, Status status) {
+			Integer volunteer, Status status) {
 		super();
 		this.id = id;
 		this.titre = titre;
@@ -85,11 +85,11 @@ public class Mission {
 		this.initiator = initiator;
 	}
 
-	public int getVolunteer() {
+	public Integer getVolunteer() {
 		return volunteer;
 	}
 
-	public void setVolunteer(int volunteer) {
+	public void setVolunteer(Integer volunteer) {
 		this.volunteer = volunteer;
 	}
 

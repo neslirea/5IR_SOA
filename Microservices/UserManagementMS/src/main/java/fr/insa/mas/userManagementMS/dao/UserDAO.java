@@ -213,7 +213,7 @@ public class UserDAO {
 	
 	public static void addInitiator(Initiator initiator) {
 		int id = addUser(initiator, "Initiator");
-		if (initiator.getValidator()!=-1) {
+		if (initiator.getValidator()!=null) {
 			addValidator(id, initiator.getValidator());
 		}
 	}	

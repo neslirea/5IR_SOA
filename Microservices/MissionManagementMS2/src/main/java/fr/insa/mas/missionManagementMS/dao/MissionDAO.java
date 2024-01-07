@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -50,7 +51,11 @@ public class MissionDAO {
 		        String description = rs.getString("DESCRIPTION");
 		        Status status = getStatus(rs.getInt("STATUS"));
 		        Date creationDate = new Date(rs.getTimestamp("CREATION_DATE").getTime());
-		        Date finishDate = new Date(rs.getTimestamp("FINISH_DATE").getTime());
+		        Timestamp ts = rs.getTimestamp("FINISH_DATE");
+		        Date finishDate = null;
+		        if(ts!=null) {
+		        	finishDate = new Date(ts.getTime());
+		        }
 		        Integer initiator = rs.getInt("INITIATOR");
 		        Integer volunteer = rs.getInt("VOLUNTEER");
 		        
@@ -79,7 +84,11 @@ public class MissionDAO {
 		        String description = rs.getString("DESCRIPTION");
 		        Status status = getStatus(rs.getInt("STATUS"));
 		        Date creationDate = new Date(rs.getTimestamp("CREATION_DATE").getTime());
-		        Date finishDate = new Date(rs.getTimestamp("FINISH_DATE").getTime());
+		        Timestamp ts = rs.getTimestamp("FINISH_DATE");
+		        Date finishDate = null;
+		        if(ts!=null) {
+		        	finishDate = new Date(ts.getTime());
+		        }
 		        int initiator = rs.getInt("INITIATOR");
 		        int volunteer = rs.getInt("VOLUNTEER");
 		            
