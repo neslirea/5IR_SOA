@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="IHM pour le TD de SOA">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>A propos - Plateforme d'aide</title>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="static/script.js"></script>
+        
+    </head>
+
+    <body>
+
+        <!--Pop-Up d'erreur-->
+        <div class="modal fade" id="errModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+            
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Oups...</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+            
+                <!-- Modal body -->
+                <div class="modal-body" id="errorMsg"></div>
+            
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            
+                </div>
+            </div>
+        </div>
+
+         <!-- Menu -->
+        <nav class="navbar navbar-expand-sm bg-light mb-5 fixed-top">
+
+            <div class="container-fluid">
+                <!-- Liens -->
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="users.html">Utilisateurs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="missions.html">Missions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reviews.html">Avis</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">A propos</a></li>
+                </ul>
+            </div>
+        
+        </nav> 
+
+        <div id="titre" class="container-fluid text-center" style="margin-top:80px">
+            <h1>A propos</h1>
+            <p>Cette plateforme sert d'interface pour le TD de SOA de la filière 5 SDBD à l'INSA
+                Toulouse. 
+                </br> Auteurs : Aymeric Shinawi et Cléa Aubery.
+                </br> Janvier 2024
+            </p>
+        </div>
+
+
+
+    </body>
+
+</html>
+        
